@@ -1,0 +1,10 @@
+# Using SQL to join tables together to sort customer counts by coutnry
+
+SELECT D.country,
+      COUNT (customer_id) AS customers
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country ON C.country = D.country_id
+GROUP BY country
+ORDER BY customers DESC
+LIMIT 10
